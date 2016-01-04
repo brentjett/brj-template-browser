@@ -1,0 +1,2 @@
+!function($){brj.store.views.screens.Library=Marionette.LayoutView.extend({template:"brj-store-library-view",className:"brj-store-screen brj-store-screen-type-library",regions:{content:".detail-content"},ui:{},onRender:function(){}})}(jQuery);
+//# sourceMappingURL=./view-screen-library-min.js.map

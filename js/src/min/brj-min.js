@@ -1,0 +1,2 @@
+window.Marionette=Backbone.Marionette,window.brj=window.brj||{},brj.store={models:{},collections:{},views:{},controllers:{}},Marionette.Renderer.render=function(e,r){var n=wp.template(e);return n(r)};
+//# sourceMappingURL=./brj-min.js.map

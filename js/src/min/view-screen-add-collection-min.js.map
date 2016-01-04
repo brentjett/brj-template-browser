@@ -1,0 +1,1 @@
+{"version":3,"sources":["../view-screen-add-collection.js"],"names":["$","brj","store","views","screens","AddCollection","Marionette","LayoutView","extend","template","className","jQuery"],"mappings":"CAAA,SAAUA,GACNC,IAAIC,MAAMC,MAAMC,QAAQC,cAAgBC,WAAWC,WAAWC,QAC1DC,SAAU,iCACVC,UAAW,2DAGhBC","file":"view-screen-add-collection-min.js"}

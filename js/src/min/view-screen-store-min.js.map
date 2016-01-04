@@ -1,0 +1,1 @@
+{"version":3,"sources":["../view-screen-store.js"],"names":["$","brj","store","views","screens","Store","Marionette","LayoutView","extend","template","className","regions","content","ui","onRender","jQuery"],"mappings":"CAAA,SAAUA,GACNC,IAAIC,MAAMC,MAAMC,QAAQC,MAAQC,WAAWC,WAAWC,QAClDC,SAAU,2BACVC,UAAW,oDACXC,SACIC,QAAS,mBAEbC,MACAC,SAAU,gBA6DfC","file":"view-screen-store-min.js"}

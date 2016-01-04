@@ -1,0 +1,2 @@
+!function($){brj.store.views.screens.AddCollection=Marionette.LayoutView.extend({template:"brj-store-single-template-view",className:"brj-store-screen brj-store-screen-type-add-collection"})}(jQuery);
+//# sourceMappingURL=./view-screen-add-collection-min.js.map

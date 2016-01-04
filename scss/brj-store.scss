@@ -1,0 +1,520 @@
+
+$sidebar_width: 280px;
+$sidebar_bg_color: white;
+
+$detail_width: 615px;
+$detail_bg_color: #E7E7E7;
+
+$panel_width: $sidebar_width + $detail_width;
+$panel_height: 575px;
+
+$default_transition_duration: .25s;
+
+$highlight_color: #50B7E3;
+
+.not-selectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select:none;
+    cursor:default;
+}
+
+.full-screen {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+
+.brj-simple-button {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    color:#686868;
+    background:transparent;
+    border:none;
+    outline:none;
+    padding:7px;
+    border-radius: 3px;
+    text-decoration:none;
+    cursor: pointer;
+    @extend .not-selectable;
+
+    &:hover {
+        background: $highlight_color;
+        border:none;
+        color:white;
+        text-decoration:none;
+    }
+}
+
+body {
+
+    .brj-store-modal {
+        //display: block;
+        overflow: auto;
+        padding:0px;
+        font-family: 'Open Sans', Helvetica, sans-serif;
+
+        .brj-store-lightbox {
+            display: table;
+            width:100%;
+            height:100%;
+            background: transparent;
+            position: relative;
+            z-index: 100011;
+            pointer-events: none;
+
+            .brj-store-lightbox-inside {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+
+                .brj-store-panel {
+                    position: relative;
+                    width: $panel_width;
+                    height: $panel_height;
+                    background-color:$detail_bg_color;
+                    position: relative;
+                    display: inline-block;
+                    text-align: left;
+                    transform: scale(.8);
+                    transition-property: transform;
+                    transition-duration: $default_transition_duration;
+                    pointer-events: auto;
+                    vertical-align: middle;
+                    max-height: 94vh;
+
+                    .sidebar-area {
+                        width: $sidebar_width;
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        bottom:0;
+                        background: $sidebar_bg_color;
+                        box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.14);
+                        z-index: 9999;
+
+                        @extend .not-selectable;
+
+                        .sidebar-header {
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            padding:21px 20px 27px;
+                            z-index: 999;
+                            pointer-events: none;
+                            background-image: linear-gradient(-180deg, #ffffff 63%, rgba(255,255,255,0.00) 100%);
+
+                            .dismiss-panel-trigger {
+                                display: inline-block;
+                                padding: 10px;
+                                color:rgba(0, 0, 0, .2) !important;
+                                cursor: pointer;
+                                font-size:20px;
+                                pointer-events: auto;
+
+                                &:hover {
+                                    color:rgba(0, 0, 0, .5) !important;
+                                }
+                            }
+                            .sidebar-title {
+                                display: inline-block;
+                                font-size:22px;
+                                font-weight: 200;
+                                color:#646464;
+                            }
+                        }
+                        .sidebar-content {
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            bottom:0;
+                            right:0;
+                            padding-top:90px;
+                            padding-bottom:40px;
+                            overflow: auto;
+                            z-index: 9;
+
+                            .brj-sidebar-item {
+                                position: relative;
+                                padding:8px 20px;
+                                margin:0 10px;
+                                font-size:18px;
+                                font-weight: 200;
+                                color: #363636;
+                                cursor: pointer;
+                                border-radius: 3px;
+                                border:3px solid transparent;
+                                transition-property: background;
+                                transition-duration: $default_transition_duration;
+
+                                .item-title {
+                                    pointer-events: none;
+
+                                    .delete-item {
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        display: none;
+                                        font-size: 13px;
+                                        padding: 11px;
+                                        pointer-events: auto;
+                                    }
+                                }
+
+                                &:hover {
+                                    color: $highlight_color;
+                                }
+
+                                &.active {
+                                    background:#50B7E3;
+                                    color:white !important;
+                                    box-shadow: -1px 1px 9px 0px rgba(0,0,0,0.27);
+                                    box-shadow: -9px 1px 22px 0px rgba(0, 0, 0, 0.1);
+
+                                    &:hover {
+                                        .item-title .delete-item {
+                                            display:block;
+                                            background:#50B7E3;
+                                        }
+                                    }
+                                }
+
+                                &.drop-zone {
+                                    border:3px solid $highlight_color;
+                                    border-radius: 6px;
+                                    color: $highlight_color;
+                                }
+                            }
+                            hr {
+                                margin:10px 0px;
+                                margin-left:30px;
+                                height:1px;
+                                background: #DEDEDE;
+                                border:none;
+                            }
+                        }
+                    }
+                    .detail-area {
+                        box-sizing: border-box;
+                        position: relative;
+                        margin-left: $sidebar_width;
+                        height:100%;
+                        overflow: hidden;
+                        z-index: 9;
+
+                        .screen-background {
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            bottom:0;
+                            right:0;
+                            background-position: center top;
+                            background-size: cover;
+                            background-repeat:no-repeat;
+                        }
+
+                        .detail-header {
+                            padding:30px 30px 40px;
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            z-index: 999;
+                            background-image: linear-gradient(-180deg, #E7E7E7 60%, rgba(231,231,231,0.00) 100%);
+                            pointer-events: none;
+
+                            .detail-title {
+                                font-size: 22px;
+                                font-weight: 200;
+                                color: #848484;
+                                padding:0;
+                                text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.48);
+                                pointer-events: auto;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                background: transparent;
+
+                                &:focus {
+                                    border:none;
+                                }
+
+                                //@extend .not-selectable;
+
+                                .pop-detail-view {
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        color: #555;
+                                    }
+                                }
+                            }
+                        }
+
+                        .detail-content {
+                            position: absolute;
+                            top:0;
+                            bottom:0;
+                            left:0;
+                            right:0;
+                            overflow: auto;
+                            padding-top:91px;
+
+                            .centered-message {
+                                display: table;
+                                width:100%;
+                                height:100%;
+
+                                .centered-message-inside {
+                                    display: table-cell;
+                                    vertical-align: middle;
+                                    text-align: center;
+                                    padding: 180px 20px;
+
+                                    .message {
+                                        color: #9C9C9C;
+                                        font-size: 20px;
+                                        font-weight: 200;
+                                    }
+                                }
+                            }
+
+
+                            .detail-item-row {
+                                padding:0 30px;
+
+                                .detail-item {
+                                    display: block;
+                                    float:left;
+
+                                    // Template Items
+                                    &.detail-template-item {
+                                        width:33.3%;
+                                        padding:0px 10px 15px;
+                                        box-sizing: border-box;
+
+                                        .template-item-thumbnail {
+                                            display: block;
+                                            position: relative;
+                                            background:white;
+                                            background-size:cover;
+                                            background-repeat: no-repeat;
+                                            background-position: center top;
+                                            box-shadow: 0px 10px 12px 0px rgba(0,0,0,0.25);
+                                            border-radius: 3px;
+                                            cursor: pointer;
+                                            transform: scale(1);
+                                            transition-property: transform;
+                                            transition-duration: $default_transition_duration;
+
+                                            &:hover {
+                                                transform: scale(1.03);
+                                            }
+
+                                            &:before {
+                                                display: block;
+                                                content: "";
+                                                padding-top:110%;
+                                            }
+                                            .template-item-thumbnail-inside {
+                                                position: absolute;
+                                                top:0;
+                                                left:0;
+                                                bottom:0;
+                                                right:0;
+                                                overflow:hidden;
+
+                                                img {
+                                                    max-width: 100%;
+                                                }
+                                            }
+                                        }
+                                        .template-item-details {
+                                            padding:10px;
+
+                                            .template-item-title {
+                                                text-align: center;
+                                                font-size: 13px;
+                                                color: #606060 !important;
+                                                cursor: pointer;
+                                                overflow: hidden;
+                                                white-space: nowrap;
+                                                text-overflow: ellipsis;
+                                            }
+                                        }
+                                    }
+
+                                    // Collection Items
+                                    &.detail-collection-item {
+
+                                    }
+                                }
+                            }
+                        }
+
+                        // Screens
+                        .brj-store-screen {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;
+                            overflow: auto;
+
+                            &.brj-store-screen-type-collection {
+                                @extend .not-selectable;
+                            }
+                            &.brj-store-screen-type-single-template {
+                                //@extend .not-selectable;
+
+                                .screen-background {
+                                    opacity: 0.3;
+                                    -webkit-filter: blur(25px) saturate(150%);
+                                    filter: blur(15px);
+                                    transform: scale(1.1);
+                                }
+
+                                .detail-header {
+                                    background:transparent;
+
+                                    .detail-title {
+                                        color: #555555;
+
+                                        .pop-detail-view {
+
+                                            &:hover {
+                                                color: #333333;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .detail-content {
+                                    padding-left:30px;
+                                    padding-right:30px;
+                                    padding-bottom:30px;
+
+                                    .actions-column {
+                                        box-sizing: border-box;
+                                        float:left;
+                                        width:40%;
+
+                                        .template-thumbnail {
+                                            display: block;
+                                            position: relative;
+                                            background:white;
+                                            box-shadow: 0px 10px 12px 0px rgba(0,0,0,0.25);
+                                            border-radius: 3px;
+                                            margin-bottom:15px;
+                                            cursor: pointer;
+                                            transform: scale(1);
+                                            transition-property: transform;
+                                            transition-duration: $default_transition_duration;
+
+                                            &:hover {
+                                                transform: scale(1.03);
+                                            }
+
+                                            &:before {
+                                                display: block;
+                                                content: "";
+                                                padding-top:110%;
+                                            }
+                                            .template-thumbnail-inside {
+                                                position: absolute;
+                                                top:0;
+                                                left:0;
+                                                bottom:0;
+                                                right:0;
+                                                overflow:hidden;
+
+                                                img {
+                                                    max-width: 100%;
+                                                }
+                                            }
+                                        }
+                                        .template-actions {
+                                            .brj-simple-button {
+                                                display: block;
+                                                width: 100%;
+                                            }
+                                        }
+                                    }
+                                    .settings-column {
+                                        float:left;
+                                        width:60%;
+                                        box-sizing: border-box;
+                                        padding-left:20px;
+
+                                        .template-name {
+                                            font-size: 24px;
+                                            font-weight: 200;
+                                            color: #454545;
+                                            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.48);
+                                            margin-bottom:15px;
+                                            background:transparent;
+                                            border:none;
+                                            padding: 0;
+
+                                            &:focus {
+                                                border:none;
+                                                outline:none;
+                                            }
+                                        }
+
+                                        .settings-section {
+                                            margin-bottom:15px;
+
+                                            .settings-section-title {
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                                color: #4D4D4D;
+                                                @extend .not-selectable;
+                                            }
+                                            .settings-section-content {
+                                                color: #5D5D5D;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.brj-store-screen-type-add-library {
+
+                                input[name="store-url"] {
+                                    display: inline;
+                                    font-size: 18px;
+                                    background:transparent;
+                                    border:none;
+                                    outline:none;
+                                    padding:30px 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.brj-store-display-panel {
+        overflow: hidden !important;
+
+        .brj-store-modal {
+            display: block;
+
+            .brj-store-lightbox {
+                .brj-store-lightbox-inside {
+                    .brj-store-panel {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+}

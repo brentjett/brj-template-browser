@@ -1,0 +1,2 @@
+!function($){brj.store.models.Template=Backbone.Model.extend({defaults:{handle:"",label:"",description:"",author:{name:""},modified:"",is_public:!1,screenshot:{thumbnail:""},layout:{}}}),brj.store.collections.Templates=Backbone.Collection.extend({model:brj.store.models.Template})}(jQuery);
+//# sourceMappingURL=./models-min.js.map

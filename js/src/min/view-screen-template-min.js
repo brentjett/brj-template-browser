@@ -1,0 +1,2 @@
+!function($){brj.store.views.screens.Template=Marionette.LayoutView.extend({template:"brj-store-single-template-view",className:"brj-store-screen brj-store-screen-type-single-template",id:function(){return"brj-screen-"+this.model.get("name")},ui:{backBtn:".pop-detail-view"},events:{"click @ui.backBtn":"onDismissScreen"},onDismissScreen:function(e){brj.store.app.rootView.popDetailView()}})}(jQuery);
+//# sourceMappingURL=./view-screen-template-min.js.map
