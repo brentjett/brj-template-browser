@@ -14,11 +14,11 @@
 			sync: function( method, model, options ) {
 				options = options || {};
 
-				if ( 'undefined' !== typeof WP_API_Settings.nonce ) {
+				if ( 'undefined' !== typeof BRJ_StoreInitialData.nonce ) {
 					var beforeSend = options.beforeSend;
 
 					options.beforeSend = function( xhr ) {
-						xhr.setRequestHeader( 'X-WP-Nonce', WP_API_Settings.nonce );
+						xhr.setRequestHeader( 'X-WP-Nonce', BRJ_StoreInitialData.nonce );
 
 						if ( beforeSend ) {
 							return beforeSend.apply( this, arguments );

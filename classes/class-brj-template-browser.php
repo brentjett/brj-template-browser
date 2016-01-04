@@ -18,7 +18,9 @@ class BRJ_TemplateBrowser {
 
             $data = array(
                 'collections' => BRJ_TemplateCollection::get_collections(),
-                'libraries' => array_values(BRJ_TemplateLibrary::get_libraries())
+                'libraries' => array_values(BRJ_TemplateLibrary::get_libraries()),
+                'root' => esc_url_raw( get_rest_url() ),
+                'nonce' => wp_create_nonce( 'wp_rest' )
             );
             wp_localize_script('brj-store', 'BRJ_StoreInitialData', $data);
         }
