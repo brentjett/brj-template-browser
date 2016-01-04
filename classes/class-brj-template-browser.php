@@ -13,7 +13,7 @@ class BRJ_TemplateBrowser {
     function enqueue() {
         if (class_exists( 'FLBuilderModel' ) && FLBuilderModel::is_builder_active()) {
 
-            wp_enqueue_script('brj-store', plugins_url('/js/min/brj-store-min.js', dirname(__FILE__)), array('backbone', 'wp-api', 'wp-util' ));
+            wp_enqueue_script('brj-store', plugins_url('/js/min/brj-store-min.js', dirname(__FILE__)), array('backbone', 'wp-util' ));
             wp_enqueue_style('brj-store', plugins_url('/css/brj-store.css', dirname(__FILE__)), array('open-sans'));
 
             $data = array(
