@@ -13,6 +13,15 @@
         onStart: function() {
             this.initModels();
             this.initViews();
+
+            // Override if blank show template browser.
+            FLBuilder._initTemplateSelector = function() {
+    			var rows = $(FLBuilder._contentClass).find('.fl-row');
+
+    			if(rows.length === 0) {
+                    brj.store.app.displayPanel();
+    			}
+    		};
         },
         initModels: function() {
 
@@ -52,12 +61,14 @@
             this.rootView = new brj.store.views.Root();
             this.rootView.render();
 
+            // Add Button to BB Toolbar.
             var html = '<span class="fl-builder-store-button fl-builder-button">Templates (demo)</span>';
             $('.fl-builder-templates-button').after(html);
 
-            $('.fl-builder-store-button').on('click', function() {
-                $('body').toggleClass('brj-store-display-panel');
-            });
+            $('.fl-builder-store-button').on('click', this.displayPanel );
+        },
+        displayPanel: function() {
+            $('body').toggleClass('brj-store-display-panel');
         },
         dismissPanel: function() {
             $('body').removeClass('brj-store-display-panel');

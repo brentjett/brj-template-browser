@@ -6,6 +6,7 @@
             <div class="brj-store-panel">
                 <div class="sidebar-area"></div>
                 <div class="detail-area"></div>
+                <div class="drop-area"></div>
             </div>
 
         </div>

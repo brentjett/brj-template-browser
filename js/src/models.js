@@ -1,4 +1,26 @@
-(function($){
+window.Marionette = Backbone.Marionette;
+window.brj = window.brj || {};
+window.FLBuilderTemplateBrowser = window.FLBuilderTemplateBrowser || {};
+window.FLBuilderTemplateBrowser = {
+    models: {},
+    collections: {},
+    views: {
+        screens: {},
+        collections: {},
+        items: {}
+    },
+    controllers: {}
+};
+// Deprecated - brj.store scope is being replaced.
+brj.store = window.FLBuilderTemplateBrowser;
+
+// Switch to wp.template renderer
+Marionette.Renderer.render = function(template, data){
+    var renderer = wp.template(template);
+    return renderer(data);
+};
+
+(function($, TemplateBrowser){
 
     brj.store.models.Base = Backbone.Model.extend(
 		/** @lends WPApiBaseModel.prototype  */
@@ -217,4 +239,4 @@
         model: brj.store.models.Library,
     });
 
-})(jQuery);
+})(jQuery, FLBuilderTemplateBrowser);
